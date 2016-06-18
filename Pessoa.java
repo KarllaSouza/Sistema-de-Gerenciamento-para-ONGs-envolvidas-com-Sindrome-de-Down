@@ -1,60 +1,50 @@
-package projeto.model;
+package model;
 
 import java.util.Date;
 
 public class Pessoa {
-	private String nome;
-	private String rg;
-	private Date dataDeNascimento;
-	private String numeroDeContato;
-	private String cidade;
-	private String estado;
-	private boolean isGerente;
-	Pessoa pessoa;
-
-	public void setNome(String nome){
-		this.nome = nome;
-	}
-	public void setRg(String rg){
-		this.rg = rg;
-	}
-	public void setDataDeNascimento(Date dataDeNascimento){
-		this.dataDeNascimento = dataDeNascimento;
-	}
-	public void setNumeroDeContato(String numeroDeContato){
-		this.numeroDeContato = numeroDeContato;
-	}
-	public void setCidade(String cidade){
-		this.cidade = cidade;
-	}
-	public void setEstado(String estado){
-		this.estado = estado;
-	}
-	public void setIsGerente(boolean isGerente){
-		this.isGerente = isGerente;
-	}
-
+	protected String nome;
+	protected Date dataNasc;
+	protected String cpf;
+	protected Endereco endereco;
+	protected String telefone;
+	protected String email;	
 	
+	public void setNome(String nome){
+		this.nome=nome;
+	}	
 	public String getNome(){
 		return this.nome;
 	}
-	public String getRg(){
-		return this.rg;
+	public void setDataNasc(Date dataNasc){
+		this.dataNasc=dataNasc;
 	}
-	public Date getDataDeNascimento(){
-		return this.dataDeNascimento;
+	public Date getDataNasc(){
+		return this.dataNasc;
 	}
-	public String getNumeroDeContato(){
-		return this.numeroDeContato;
+	public void setCpf(String cpf){
+		this.cpf=cpf;
 	}
-	public String getCidade(){
-		return this.cidade;
+	public String getCpf(){
+		return this.cpf;
 	}
-	public String getEstado(){
-		return this.estado;
+	public void setEndereco(Endereco endereco){
+		this.endereco=endereco;
 	}
-	public boolean getIsGerente(){
-		return this.isGerente;
+	public Endereco getEndereco(){
+		return this.endereco;
 	}
-
+	public void setTelefone(String telefone){
+		this.telefone=telefone;
+	}
+	public String getTelefone(){
+		return this.telefone;
+	}
+	public void setEmail(String email){
+		this.email=email;
+	}
+	public String getEmail(){
+		return this.email;
+	}
 }
+
