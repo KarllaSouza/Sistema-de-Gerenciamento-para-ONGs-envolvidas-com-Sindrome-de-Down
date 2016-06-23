@@ -218,6 +218,11 @@ INSERT INTO `patrimonio` (`id_patrimonio`, `descricao_patrimonio`, `tipo_patrimo
 ALTER TABLE `atividades`
   ADD PRIMARY KEY (`id_atividade`);
 
+ALTER TABLE `atividades` ADD `Horario_1` TIME NOT NULL COMMENT 'horario_inicial' AFTER `descricao_atividade`;
+ALTER TABLE `atividades` ADD `Horario_1_saida` TIME NOT NULL COMMENT 'saida' AFTER `Horario_1`, ADD `Horario_2_entrada` TIME NOT NULL COMMENT 'inicio' AFTER `Horario_1_saida`, ADD `Horario_2_saida` TIME NOT NULL COMMENT 'saida' AFTER `Horario_2_entrada`;
+ALTER TABLE `atividades` CHANGE `Horario_1` `Horario_1_entrada` TIME NOT NULL COMMENT 'horario_inicial';
+INSERT INTO `atividades` (`id_atividade`, `descricao_atividade`, `Horario_1_entrada`, `Horario_1_saida`, `Horario_2_entrada`, `Horario_2_saida`, `responsavel_atividade`, `material_para_atividade`) VALUES ('1', 'Alfabetização', '07:00:00', '10:00:00', '13:00:00', '15:00:00', 'Eike Duarte Santiago', 'cadernos, brinquedos, lápis colorido, massa de modelar'), ('2', 'Comunicação', '08:00:00', '09:00:00', '14:00:00', '15:00:00', 'Felipe Gualberto', ''), ('3', 'Raciocínio Lógico Matemático', '10:00:00', '11:30:00', '16:00:00', '17:30:00', 'Karlla D. Souza', 'quebra-cabeças, jogos de montar, formas geométricas'), ('4', 'Coordenação Motora', '7:00:00', '8:00:00', '13:00:00', '14:00:00', 'Georgia Demas', 'cds musicais, bolas'), ('5', 'informática', '10:00:00', '11:00:00', '16:00:00', '17:00:00', 'Eike Duarte Santiago; Felipe Gualberto', 'computadores, jogos virtuais');
+UPDATE `atividades` SET `responsavel_atividade` = 'Eike Duarte; Felipe Gualberto' WHERE `atividades`.`id_atividade` = 5;
 --
 -- Indexes for table `colaborador`
 --
