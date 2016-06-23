@@ -207,7 +207,7 @@ CREATE TABLE `patrimonio` (
   `data_obtencao_patrimonio` date NOT NULL COMMENT 'data em que a ong recebeu esse patrimônio'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+INSERT INTO `patrimonio` (`id_patrimonio`, `descricao_patrimonio`, `tipo_patrimonio`, `data_obtencao_patrimonio`) VALUES ('1', 'Casa', 'imóvel', '2016-06-23');
 --
 -- Indexes for dumped tables
 --
