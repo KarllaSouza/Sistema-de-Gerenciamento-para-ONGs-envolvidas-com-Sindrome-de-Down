@@ -27,7 +27,6 @@ public class AtividadesDAO {
 
         PreparedStatement stmt = conexao.prepareStatement(sql);
 
-        //seta os valores
         stmt.setString(2, reg.getDescricaoAtividade());
   //      stmt.setTime(3, reg.getHorarioEntrada1());
   //      stmt.setTime(4, reg.getHorarioSaida1());
@@ -36,7 +35,6 @@ public class AtividadesDAO {
         stmt.setString(7, reg.getResponsavelAtividade());
         stmt.setString(8, reg.getMaterialParaAtividade());
 
-        //executa o codigo
         stmt.execute();
         stmt.close();
     }
@@ -45,7 +43,6 @@ public class AtividadesDAO {
         String sql = "UPDATE ATIVIDADES SET DESCRICAO_ATIVIDADE=?,HORARIO_1_ENTRADA=?,HORARIO_1_SAIDA=?,HORARIO_2_ENTRADA=?,HORARIO_2_SAIDA=?,RESPONSAVEL_ATIVIDADE=?,MATERIAL_PARA_ATIVIDADE=? where ID_ATIVIDADE=?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
 
-        //seta os valores
         stmt.setInt(1, reg.getIdAtividade());
         stmt.setString(2, reg.getDescricaoAtividade());
 //        stmt.setTime(3, reg.getHorarioEntrada1());
@@ -57,7 +54,6 @@ public class AtividadesDAO {
 
         stmt.setInt(10, reg.getIdAtividade());
 
-        //executa o codigo
         stmt.execute();
         stmt.close();
 
