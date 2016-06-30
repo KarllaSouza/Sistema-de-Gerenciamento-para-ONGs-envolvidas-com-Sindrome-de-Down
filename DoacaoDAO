@@ -1,0 +1,68 @@
+package DAO;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+//import java.sql.Time;
+//import java.util.Timer;
+
+import model.Atividades;
+import util.ConnectionFactory;
+import util.Conexao;
+
+import model.Doacao;
+
+@SuppressWarnings("unused")
+	public class DoacaoDAO {
+	    private Connection conexao;
+
+	    public DoacaoDAO() throws SQLException {
+	        this.conexao = ConnectionFactory.getConexao();
+	    }
+
+	    public void adicionar(Doacao reg) throws SQLException {
+	    	String sql = "INSERT INTO DOACAO (id_colaborador,moeda_doacao, valor_doacao,data_doacao)"+"values(?,?,?,?)";
+
+	        PreparedStatement stmt = conexao.prepareStatement(sql);
+
+	        //seta os valores
+	        stmt.setInt(1, reg.getIdDoacao());
+	        
+	        stmt.setInt(2, reg.getIdColaborador());
+	        stmt.setString(3, reg.getMoedaDoacao());
+	        stmt.setDouble(4, reg.getValorDoacao());
+	        stmt.setDate(5, (Date) reg.getDataDoacao());
+
+	        //executa o codigo
+	        stmt.execute();
+	        stmt.close();
+	    }
+	    
+	    public List<Doacao> getLista(String pesquisa) throws SQLException {
+	        String sql = "SELECT * FROM DOACAO WHERE ID_COLABORADOR LIKE ?";
+	        PreparedStatement stmt = this.conexao.prepareStatement(sql);
+	        stmt.setString(1, pesquisa);
+	        ResultSet rs = stmt.executeQuery();
+
+	        List<Doacao> doacao = new ArrayList<Doacao>();
+
+	        while (rs.next()) {
+	            Doacao reg = new Doacao();
+	            reg.setIdDoacao(rs.getInt("ID_DOACAO"));
+	            reg.setIdColaborador(rs.getInt("ID_COLABORADOR"));
+	            reg.setMoedaDoacao(rs.getString("MOEDA_DOACAO"));
+	            reg.setValorDoacao(rs.getDouble("VALOR_DOACAO"));
+	            reg.setDataDoacao(rs.getDate("DATA_DOACAO"));
+	            doacao.add(reg);
+	        }
+	        rs.close();
+	        stmt.close();
+	        return doacao;
+	    }
+
+	
+}
